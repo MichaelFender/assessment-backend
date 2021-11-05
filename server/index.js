@@ -22,7 +22,7 @@ app.get("/api/compliment", (req, res) => {
   
 });
 
-
+///////////////////////
 ///////////////////////
 
 app.get("/api/fortune", (req, res) => {
@@ -41,7 +41,17 @@ app.get("/api/fortune", (req, res) => {
   res.status(200).send(randomFortune);
 
 });
-  
+///////////////////////
+///////////////////////
 
 
+
+
+
+
+
+
+
+///////////////////////
+///////////////////////
 app.listen(4000, () => console.log("Server running on 4000"));
