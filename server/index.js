@@ -23,26 +23,24 @@ app.get("/api/compliment", (req, res) => {
 });
 
 ///////////////////////
-///////////////////////
 
 app.get("/api/fortune", (req, res) => {
-  const fortunes =[" A smooth long journey! Great expectations.",
-  "Curiosity kills boredom. Nothing can kill curiosity." ,
-  "Education is the ability to meet life’s situations.",
-  "Good to begin well, better to end well.",
-  "Imagination rules the world.",
-
+  const compliments = ["Tough love only works when there is as much love as there is tough.",
+					 "If you want the rainbow, you gotta put up with the rain!",
+					 "It is never too late to be what you might have been.",
+           "You are your best thing.",
+           "It takes courage to grow up and become who you really are."
   ];
 
- 
-  let randomIndex = Math.floor(Math.random() * fortunes.length);
-  let randomFortune = fortunes[randomIndex];
+  // choose random compliment
+  let randomIndex = Math.floor(Math.random() * compliments.length);
+  let randomFortune = compliments[randomIndex];
 
   res.status(200).send(randomFortune);
-
+  
 });
 ///////////////////////
-///////////////////////
+
 
 
 ///////////////////////
