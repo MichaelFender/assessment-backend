@@ -8,6 +8,8 @@ app.use(cors());
 
 app.use(express.json()); // When we want to be able to accept JSON.
 
+
+
 app.get("/api/compliment", (req, res) => {
   const compliments = ["Gee, you're a smart cookie!",
 					 "Cool shirt!",
@@ -22,27 +24,22 @@ app.get("/api/compliment", (req, res) => {
   
 });
 
-///////////////////////
-
 app.get("/api/fortune", (req, res) => {
-  const compliments = ["Tough love only works when there is as much love as there is tough.",
-					 "If you want the rainbow, you gotta put up with the rain!",
-					 "It is never too late to be what you might have been.",
-           "You are your best thing.",
-           "It takes courage to grow up and become who you really are."
-  ];
+  const fortunes = ["Tough love only works when there is as much love as there is tough.",
+  "If you want the rainbow, you gotta put up with the rain!",
+  "It is never too late to be what you might have been.",
+  "You are your best thing.",
+  "It takes courage to grow up and become who you really are."
+];
 
-  // choose random compliment
-  let randomIndex = Math.floor(Math.random() * compliments.length);
-  let randomFortune = compliments[randomIndex];
+  // choose random fortune
+  let randomIndex = Math.floor(Math.random() * fortunes.length);
+  let randomFortune = fortunes[randomIndex];
 
   res.status(200).send(randomFortune);
   
 });
-///////////////////////
+///////////////////////////////////////
 
-
-
-///////////////////////
-///////////////////////
+///////////////////////////////////////
 app.listen(4000, () => console.log("Server running on 4000"));
