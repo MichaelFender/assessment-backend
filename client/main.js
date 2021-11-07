@@ -1,61 +1,61 @@
-const housesContainer = document.querySelector('#houses-container')
+const profilesContainer = document.querySelector('#profiles-container')
 const form = document.querySelector('form')
 
-const baseURL = `http://localhost:4004/api/houses`
+const baseURL = `http://localhost:4000/api/profiles`
 
-const housesCallback = ({ data: houses }) => displayHouses(houses)
+const profilesCallback = ({ data: profiles }) => displayProfiles(profiles)
 const errCallback = err => console.log(err)
 
-const getAllHouses = () => axios.get(baseURL).then(housesCallback).catch(errCallback)
-const createHouse = body => axios.post(baseURL, body).then(housesCallback).catch(errCallback)
-const deleteHouse = id => axios.delete(`${baseURL}/${id}`).then(housesCallback).catch(errCallback)
-const updateHouse = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(housesCallback).catch(errCallback)
+const getAllProfiles = () => axios.get(baseURL).then(profilesCallback).catch(errCallback)
+const createProfile = body => axios.post(baseURL, body).then(profilesCallback).catch(errCallback)
+const deleteProfile = id => axios.delete(`${baseURL}/${id}`).then(profilesCallback).catch(errCallback)
+const updateProfile = (id, type) => axios.put(`${baseURL}/${id}`, {type}).then(profilesCallback).catch(errCallback)
 
 function submitHandler(e) {
     e.preventDefault()
 
-    let address = document.querySelector('#address')
-    let price = document.querySelector('#price')
+    let salary = document.querySelector('#salary')
+    let name = document.querySelector('#name')
     let imageURL = document.querySelector('#img')
 
     let bodyObj = {
-        address: address.value,
-        price: price.value, 
+        name: name.value,
+        salary: salary.value, 
         imageURL: imageURL.value
     }
 
-    createHouse(bodyObj)
+    createProfile(bodyObj)
 
-    address.value = ''
-    price.value = ''
+    name.value = ''
+    salary.value = ''
     imageURL.value = ''
 }
 
-function createHouseCard(house) {
-    const houseCard = document.createElement('div')
-    houseCard.classList.add('house-card')
+function createProfileCard(profile) {
+    const profileCard = document.createElement('div')
+    profileCard.classList.add('profile-card')
 
-    houseCard.innerHTML = `<img alt='house cover image' src=${house.imageURL} class="house-cover-image"/>
-    <p class="address">${house.address}</p>
+    profileCard.innerHTML = `<img alt='profile cover image' src=${profile.imageURL} class="profile-cover-image"/>
+    <p class="name">${profile.name}</p>
     <div class="btns-container">
-        <button onclick="updateHouse(${house.id}, 'minus')">-</button>
-        <p class="house-price">$${house.price}</p>
-        <button onclick="updateHouse(${house.id}, 'plus')">+</button>
+        <button onclick="updateProfile(${profile.id}, 'minus')">-</button>
+        <p class="profile-salary">$${profile.salary}</p>
+        <button onclick="updateProfile(${profile.id}, 'plus')">+</button>
     </div>
-    <button onclick="deleteHouse(${house.id})">delete</button>
+    <button onclick="deleteProfile(${profile.id})">delete</button>
     `
 
 
-    housesContainer.appendChild(houseCard)
+    profilesContainer.appendChild(profileCard)
 }
 
-function displayHouses(arr) {
-    housesContainer.innerHTML = ``
+function displayProfiles(arr) {
+    profilesContainer.innerHTML = ``
     for (let i = 0; i < arr.length; i++) {
-        createHouseCard(arr[i])
+        createProfileCard(arr[i])
     }
 }
 
 form.addEventListener('submit', submitHandler)
 
-getAllHouses()
+getAllProfiles()

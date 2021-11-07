@@ -24,6 +24,7 @@ app.get("/api/compliment", (req, res) => {
   
 });
 
+
 app.get("/api/fortune", (req, res) => {
   const fortunes = ["Tough love only works when there is as much love as there is tough.",
   "If you want the rainbow, you gotta put up with the rain!",
@@ -40,6 +41,19 @@ app.get("/api/fortune", (req, res) => {
   
 });
 ///////////////////////////////////////
+const {
+  getProfiles,
+  deleteProfile, 
+  createProfile, 
+  updateProfile
+} = require('./controller')
+
+app.get(`/api/profiles`, getProfiles)
+app.delete(`/api/profiles/:id`, deleteProfile)
+app.post(`/api/profiles`, createProfile)
+app.put(`/api/profiles/:id`, updateProfile)
+
 
 ///////////////////////////////////////
-app.listen(4000, () => console.log("Server running on 4000"));
+const SERVER_PORT = 4000
+app.listen(SERVER_PORT, () => console.log(`Server running on ${SERVER_PORT}`));
