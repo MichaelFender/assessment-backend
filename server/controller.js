@@ -34,10 +34,10 @@ module.exports = {
             res.status(400).send('cannot go below zero dollars')
         } else
          if (type === 'plus'){
-            profiles[index].salary = parseInt(profiles[index].salary) + 10000;
+            profiles[index].salary = parseInt(profiles[index].salary) + 10000
             res.status(200).send(profiles)
         } else if (type === 'minus') {
-            profiles[index].salary -= 10000;
+            profiles[index].salary = parseInit(profiles[index].salary) + 10000
             res.status(200).send(profiles)
         } else {
             res.sendStatus(400)
